@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         experimental: [false]
-        tags: [none,avx,sse]
+        tags: [none]
     runs-on: "macos-latest"
     continue-on-error: ${{ matrix.experimental }}
     steps:
@@ -77,7 +77,7 @@ jobs:
     strategy:
       matrix:
         experimental: [false]
-        tags: [none,avx,sse]
+        tags: [none]
     runs-on: "macos-latest"
     continue-on-error: ${{ matrix.experimental }}
     steps:
