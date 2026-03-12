@@ -1,18 +1,18 @@
 ## DO NOT EDIT - This file is generated
 on: [pull_request]
-name: Build and Tests on MacOS/amd64
+name: Build and Tests on MacOS
 env:
   GOPROXY: "https://proxy.golang.org"
 jobs:
   stable-go:
-    name: Build and test on latest stable Go release - MacOS/amd64 
+    name: Build and test on latest stable Go release - MacOS/amd64
     env:
-      GOVERSION: '1.16.x'
+      GOVERSION: '1.22.x'
     strategy:
       matrix:
         experimental: [false]
         tags: [none,avx,sse]
-    runs-on: "macos-13"
+    runs-on: "macos-latest"
     continue-on-error: ${{ matrix.experimental }}
     steps:
     - name: Install Go 
@@ -71,14 +71,14 @@ jobs:
       run: |
         go test  -timeout 30m -tags=${{ matrix.tags }}
   previous-go:
-    name: Build and test on previous stable Go release - MacOS/amd64 
+    name: Build and test on previous stable Go release - MacOS/amd64
     env:
-      GOVERSION: '1.15.x'
+      GOVERSION: '1.21.x'
     strategy:
       matrix:
         experimental: [false]
         tags: [none,avx,sse]
-    runs-on: "macos-13"
+    runs-on: "macos-latest"
     continue-on-error: ${{ matrix.experimental }}
     steps:
     - name: Install Go 
