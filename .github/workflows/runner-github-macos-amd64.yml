@@ -12,7 +12,7 @@ jobs:
       matrix:
         experimental: [false]
         tags: [none,avx,sse]
-    runs-on: "macos-latest"
+    runs-on: "macos-13"
     continue-on-error: ${{ matrix.experimental }}
     steps:
     - name: Install Go 
@@ -78,7 +78,7 @@ jobs:
       matrix:
         experimental: [false]
         tags: [none,avx,sse]
-    runs-on: "macos-latest"
+    runs-on: "macos-13"
     continue-on-error: ${{ matrix.experimental }}
     steps:
     - name: Install Go 
