@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Calc coverage
       run: |
-        ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=$(go env GOVERSION) go test -v -covermode=atomic -coverprofile=coverage.out
+        ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=$(go env GOVERSION | sed 's/\.[0-9]*$//') go test -v -covermode=atomic -coverprofile=coverage.out
     - uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
