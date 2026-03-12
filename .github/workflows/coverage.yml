@@ -15,12 +15,12 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v5
       with:
-        go-version: 1.15.x
+        go-version: 1.22.x
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Calc coverage
       run: |
-        go test -v -covermode=atomic -coverprofile=coverage.out 
+        ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=$(go env GOVERSION) go test -v -covermode=atomic -coverprofile=coverage.out
     - uses: codecov/codecov-action@v4
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
